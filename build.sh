@@ -20,7 +20,7 @@ termux_step_pre_configure() {
 termux_step_make_install() {
 	cd $TERMUX_PKG_SRCDIR/src
 
-  sed -i 's/P_tmpdir/"\/tmp"/g' path/temp.c
+  sed -i 's/P_tmpdir/"\/\$TMPDIR"/g' path/temp.c
 
 	make V=1
 	make install
