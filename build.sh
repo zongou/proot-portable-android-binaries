@@ -19,6 +19,18 @@ termux_step_pre_configure() {
 	CPPFLAGS+=" -DARG_MAX=131072"
 }
 
+termux_step_make_install() {
+	cd $TERMUX_PKG_SRCDIR/src
+
+  sed -i 's/P_tmpdir/"\/tmp"/g' path/temp.c
+
+	make V=1
+	make install
+
+  $STRIP proot
+	cp proot /home/builder/termux-packages
+}
+
 termux_step_post_make_install() {
 	mkdir -p $TERMUX_PREFIX/share/man/man1
 	install -m600 $TERMUX_PKG_SRCDIR/doc/proot/man.1 $TERMUX_PREFIX/share/man/man1/proot.1
