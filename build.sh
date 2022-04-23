@@ -17,6 +17,7 @@ TERMUX_PKG_EXTRA_MAKE_ARGS="-C src"
 
 termux_step_pre_configure() {
 	CPPFLAGS+=" -DARG_MAX=131072"
+        LDFLAGS+=" -static"
 }
 
 termux_step_make_install() {
