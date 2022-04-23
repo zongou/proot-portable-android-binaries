@@ -13,7 +13,7 @@ TERMUX_PKG_BUILD_IN_SRC=true
 TERMUX_PKG_EXTRA_MAKE_ARGS="-C src"
 
 # Install loader in libexec instead of extracting it every time
-export PROOT_UNBUNDLE_LOADER=$TERMUX_PREFIX/libexec/proot
+# export PROOT_UNBUNDLE_LOADER=$TERMUX_PREFIX/libexec/proot
 
 termux_step_pre_configure() {
 	CPPFLAGS+=" -DARG_MAX=131072"
