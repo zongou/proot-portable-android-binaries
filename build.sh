@@ -35,9 +35,4 @@ termux_step_make_install() {
 termux_step_post_make_install() {
 	mkdir -p $TERMUX_PREFIX/share/man/man1
 	install -m600 $TERMUX_PKG_SRCDIR/doc/proot/man.1 $TERMUX_PREFIX/share/man/man1/proot.1
-
-	sed -e "s|@TERMUX_PREFIX@|$TERMUX_PREFIX|g" \
-		$TERMUX_PKG_BUILDER_DIR/termux-chroot \
-		> $TERMUX_PREFIX/bin/termux-chroot
-	chmod 700 $TERMUX_PREFIX/bin/termux-chroot
 }
