@@ -22,13 +22,14 @@ termux_step_pre_configure() {
 
 termux_step_make_install() {
 	cd $TERMUX_PKG_SRCDIR/src
-
-  sed -i 's/P_tmpdir/"\/tmp"/g' path/temp.c
+        # sed -i 's/P_tmpdir/"\/tmp"/g' path/temp.c
+        sed -i '26atemp_dir = getenv(\"TMP\");' src/path/temp.c
+        sed -i '27aif (temp_dir == NULL)' src/path/temp.c
 
 	make V=1
 	make install
 
-  $STRIP proot
+        $STRIP proot
 	cp proot /home/builder/termux-packages
 }
 
