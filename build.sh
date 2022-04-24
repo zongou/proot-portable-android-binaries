@@ -23,7 +23,7 @@ termux_step_pre_configure() {
 termux_step_make_install() {
 	cd $TERMUX_PKG_SRCDIR/src
     # sed -i 's/P_tmpdir/"\/tmp"/g' path/temp.c
-    sed -i '26atemp_directory = getenv(\"TMP\");' path/temp.c
+    sed -i '26atemp_directory = getenv(\"TMPDIR\");' path/temp.c
     sed -i '27aif (temp_directory == NULL)' path/temp.c
 
 	make V=1
